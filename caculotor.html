@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Máy tính</title>
+</head>
+
+<body>
+<div style=" border:thick; border-color:#FF0000; border-style:ridge; margin-top:50px; color:#3300FF; margin-left:200px; margin-right:300px; padding-left:100px; padding-top:50px; padding-right:50px;">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td colspan="2" align="center">BÀI TOÁN ĐƠN GIẢN </td>
+        </tr>
+        <tr>
+            <td>Nhập số A:</td>
+            <td><input id="so1" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Nhập số B:</td>
+            <td><input id="so2" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Kết Quả Cộng:</td>
+            <td><input style="color:red; font-weight:bold;" id="kqc" type="text" disabled="disabled" /></td>
+        </tr>
+        <tr>
+            <td>Kết Quả Trừ:</td>
+            <td><input style="color:red; font-weight:bold;" id="kqt" type="text" disabled="disabled" /></td>
+        </tr>
+        <tr>
+            <td>Kết Quả Nhân:</td>
+            <td><input style="color:red; font-weight:bold;" id="kqn" type="text" disabled="disabled" /></td>
+        </tr>
+        <tr>
+            <td>Kết Quả Chia:</td>
+            <td><input style="color:red; font-weight:bold;" id="kqch" type="text" disabled="disabled" /></td>
+        </tr>
+        </tr>
+        <tr>
+            <td colspan="2"><p>&nbsp;
+            </p>
+                <p>
+                    <input name="button" type="button" onclick = "ketqua()" value="Kết Quả" />
+                </p>
+                <p>&nbsp;</p></td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+    </table>
+
+    <script>
+        BatFimEnter();
+        function ketqua()
+        {
+            var so1 = document.getElementById("so1").value;
+            var so2 = document.getElementById("so2").value;
+            if(so1 == "" || isNaN(so1))
+            {
+                alert("nhập số thứ nhất cho tao cái :) ");
+                document.getElementById("so1").focus();
+                return false;
+            }
+            else if(so2 == "" || isNaN(so2))
+            {
+                alert("mày không nhập số thứ 2 à :) ");
+                document.getElementById("so2").focus();
+                return false;
+            }
+            var num1 = parseInt(so1);
+            var num2 = parseInt(so2);
+            var kqc = num1+num2;
+            var kqt = num1-num2;
+            var kqn = num1*num2;
+
+
+            document.getElementById("kqc").value = kqc;
+            document.getElementById("kqt").value = kqt;
+            document.getElementById("kqn").value = kqn;
+            if(num2 == 0)
+            {
+                alert("số thứ 2 bằng 0 thì không thực hiện được phép chia. đồ ngu :) ")
+                document.getElementById("kqch").value = "không chia được cho 0";
+                return false;
+            }
+            else
+            {
+                var kqch = num1/num2;
+                document.getElementById("kqch").value = kqch;
+            }
+        }
+
+        function BatFimEnter()
+        {
+            document.onkeypress = function(e) {
+
+                if (e == null) { // ie
+                    keycode = event.keyCode;
+                }
+                else { // mozilla
+                    keycode = e.which;
+                }
+                if(keycode == 13){
+                    ketqua();
+                }
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
